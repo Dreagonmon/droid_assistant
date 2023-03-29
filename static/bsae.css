@@ -1,0 +1,125 @@
+:root {
+    --main-bg-color: #000;
+    --main-fg-color: #FFF;
+    --btn-bg-color: #222;
+    --btn-fg-color: #FFF;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--main-bg-color);
+    color: var(--main-fg-color);
+}
+
+button {
+    padding: 0.5rem;
+    background-color: var(--btn-bg-color);
+    color: var(--btn-fg-color);
+    border-width: 0;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:disabled {
+    color: var(--btn-bg-color);
+}
+
+textarea,
+input {
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    border-style: solid;
+}
+
+textarea,
+pre,
+code {
+    font-family: monospace;
+}
+
+.dialog {
+    border: none;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.25);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.dialog_outter {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dialog_inner {
+    width: fit-content;
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.invisiable {
+    visibility: hidden;
+}
+
+.flex-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-fix {
+    flex: 0 0;
+}
+
+.flex-auto {
+    flex: 1 1 auto;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.scroll-y {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.no-scroll {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}

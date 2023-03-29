@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Droid Assistant</title>
+        <link rel="stylesheet" type="text/css" href="bsae.css" />
+        <style>
+            .paste {
+                font-size: 1.2rem;
+                background-color: transparent;
+                color: var(--main-fg-color);
+                border-color: var(--btn-bg-color);
+            }
+            .item {
+                margin-top: 1rem;
+                width: 80%;
+            }
+        </style>
+        <script type="module" src="index.js"></script>
+    </head>
+    <body>
+        <h2>粘贴内容到此处</h2>
+        <hr style="width: 80%;"/>
+        <textarea class="paste item"></textarea>
+        <button class="item">Send</button>
+    </body>
+</html>

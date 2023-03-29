@@ -1,0 +1,7 @@
+nanostores/**/*.test.ts
+nanostores/**/*.test.js
+nanostores/img
+nanostores/test
+nanostores/.*
+nanostores/*.md
+nanostores/*.json
