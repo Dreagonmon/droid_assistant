@@ -33,9 +33,22 @@ export const request = async (url, contentObject) => {
         "Rand": rand,
         "Auth": sign(key, rand + content),
     };
-    return await fetch(url, {
-        method: "POST",
-        headers: header,
-        body: content,
-    });
+    try {
+        const resp = await fetch(url, {
+            method: "POST",
+            headers: header,
+            body: content,
+        });
+        if (resp.status == 200) {
+            return await resp.json();
+        } else if (resp.status == 404) {
+            return { code: 404, msg: "Passcode Error." };
+        } else {
+            return { code: resp.status, msg: await resp.text() };
+        }
+    } catch (err) {
+        console.error("Network Error:");
+        console.error(err);
+    }
+    return { code: 503, msg: "Service Unavailable" };
 };

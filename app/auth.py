@@ -24,6 +24,6 @@ async def auth_and_decode(request: Request) -> dict:
     content = (await request.body()).decode("utf-8")
     local_sign = sign(random_token(), h_rand + content)
     if local_sign != h_auth:
-        raise HTTPException(status_code=403)
+        raise HTTPException(status_code=404)
     return json.loads(content)
 

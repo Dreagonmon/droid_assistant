@@ -11,18 +11,18 @@
                 background-color: transparent;
                 color: var(--main-fg-color);
                 border-color: var(--btn-bg-color);
-            }
-            .item {
-                margin-top: 1rem;
+                margin: 1rem auto;
                 width: 80%;
+            }
+            #pastebin {
+                flex: 1 1 auto;
             }
         </style>
         <script type="module" src="index.js"></script>
     </head>
     <body>
-        <h2>粘贴内容到此处</h2>
+        <h2>Paste Here</h2>
         <hr style="width: 80%;"/>
-        <textarea class="paste item"></textarea>
-        <button class="item">Send</button>
+        <textarea class="paste" id="pastebin"></textarea>
     </body>
 </html>
