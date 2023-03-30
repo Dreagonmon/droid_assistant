@@ -18,7 +18,7 @@ DEBUG = False
 APP_ROOT = os_path.abspath(os_path.dirname(__file__))
 TERMUX_SDCARD = "/data/data/com.termux/files/home/storage/shared"
 # TERMUX_SDCARD = "./"
-FILE_SAVE_PATH = os_path.join(TERMUX_SDCARD, "0000TERMUXTEMP0000")
+FILE_SAVE_PATH = os_path.join(TERMUX_SDCARD, "0TERMUXTEMP0")
 DELAY_TO_DELETE = 120 # seconds
 
 files_to_be_delete = {} # type: dict[str, datetime]
@@ -42,6 +42,9 @@ def save_file(filename, b64data):
     filepath = os_path.join(FILE_SAVE_PATH, filename)
     with open(filepath, "wb") as f:
         f.write(a2b_base64(b64data))
+    try:
+        async_termux.media_scan(filepath)
+    except: pass
     files_to_be_delete[filepath] = datetime.utcnow()
 
 async def api_paste_text(request):
