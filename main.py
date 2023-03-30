@@ -80,7 +80,7 @@ async def long_running_task():
     async def callback_exit():
         exit()
     try:
-        notify_message = f"Visit http://{HOST}:{PORT}#{token}"
+        notify_message = f"Visit http://{HOST}:{PORT}#{random_token()}"
         nm = async_termux.NotificationManager()
         await nm.start_callback_server()
         notify = async_termux.Notification(nm.new_nid(), notify_message, "Droid Assistant", ongoing=True)
