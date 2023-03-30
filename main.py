@@ -21,6 +21,8 @@ TERMUX_SDCARD = "/data/data/com.termux/files/home/storage/shared"
 # TERMUX_SDCARD = "./"
 FILE_SAVE_PATH = os_path.join(TERMUX_SDCARD, "0TERMUXTEMP0")
 DELAY_TO_DELETE = 120 # seconds
+HOST = "0.0.0.0"
+PORT = 13880
 
 files_to_be_delete = {} # type: dict[str, datetime]
 background_tasks = set()
@@ -134,8 +136,6 @@ def build_app():
     return app
 
 if __name__ == "__main__":
-    HOST = "0.0.0.0"
-    PORT = 13880
     token = random_token()
     print(f"http://{HOST}:{PORT}#{token}")
     uvicorn.run(
