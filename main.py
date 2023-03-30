@@ -34,7 +34,7 @@ def start_background_task(coro):
     background_tasks.add(task)
     task.add_done_callback(background_tasks.discard)
 
-def save_file(filename, b64data):
+async def save_file(filename, b64data):
     if not os_path.exists(TERMUX_SDCARD):
         raise HTTPException(500, "Please run 'termux-setup-storage' first.")
     if not os_path.exists(FILE_SAVE_PATH):
@@ -43,7 +43,7 @@ def save_file(filename, b64data):
     with open(filepath, "wb") as f:
         f.write(a2b_base64(b64data))
     try:
-        async_termux.media_scan(filepath)
+        await async_termux.media_scan(filepath)
     except: pass
     files_to_be_delete[filepath] = datetime.utcnow()
 
@@ -68,7 +68,7 @@ async def api_paste_image(request):
         filename += ".webp"
     else:
         filename += ".jpg"
-    save_file(filename, img_data)
+    await save_file(filename, img_data)
     return JSONResponse({ "code": 200, "msg": "ok" })
 
 async def long_running_task():
