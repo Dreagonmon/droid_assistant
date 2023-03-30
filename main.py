@@ -9,6 +9,7 @@ from signal import SIGINT
 from binascii import a2b_base64
 from datetime import datetime
 from contextlib import asynccontextmanager
+from traceback import print_exc
 import uvicorn
 import asyncio
 import async_termux
@@ -44,7 +45,8 @@ async def save_file(filename, b64data):
         f.write(a2b_base64(b64data))
     try:
         await async_termux.media_scan(filepath)
-    except: pass
+    except:
+        print_exc()
     files_to_be_delete[filepath] = datetime.utcnow()
 
 async def api_paste_text(request):
@@ -82,7 +84,8 @@ async def long_running_task():
         notify = async_termux.Notification(nm.new_nid(), notify_message, "Droid Assistant", ongoing=True)
         notify.set_button1("EXIT", callback_exit)
         await nm.send_notification(notify)
-    except: pass
+    except:
+        print_exc()
 
     # delete task
     while True:
